@@ -1,0 +1,182 @@
+*{
+	margin: 0;
+	opacity: 1.0;
+	padding: 0;
+}
+body{
+	background-color:lightblue;
+}
+
+/* h1 formatting */
+.title{
+	text-decoration: none;
+}
+.title:visited{
+	color:black;
+}
+.title:active{
+    color:black;
+}
+h1{
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Cairo', sans-serif;
+	background-color:white;
+	width: 100%;
+}
+
+/* p formatting */
+p{
+	margin: 25px 10px 10px;
+}
+
+/* img formatting */
+
+#body img{
+	display:block;
+	margin-left: 300px;
+}
+
+/* Header formatting */
+
+
+#nav ul{
+	overflow: hidden;
+}
+#nav ul li{
+	display: inline;
+}
+
+#nav ul li a{
+	/*23.53%*/
+	width: 23.46%;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 11px;
+	text-align: center;
+	text-decoration: none;
+	float: left;
+	padding: 10px;
+	background-color: #2175bc;
+	color: #fff;
+}
+#nav ul li a:hover {
+	background-color:#dedede;
+	color:  #000;
+}
+#nav ul li a:active {
+	background-color: #2175bc;
+}
+.engranaje{
+	margin: 0;
+	position: absolute;
+	top: 35px;
+	right: 15px;
+}
+
+/* Body formatting */
+
+#body{
+	font-family: 'Merriweather Sans', sans-serif;
+	background-color: white;
+	width: 75%;
+	padding: 20px;
+	margin: 0 150px 0;
+}
+
+
+/* Foot formatting */
+
+#foot{
+	margin: 25px 0 0 0;
+	text-align: center;
+	font-family: 'Merriweather Sans', sans-serif;
+	color: black;
+}
+
+
+
+
+
+
+
+
+/* Table formatting */
+
+table{
+	background-color: white;
+	margin: 0 0 0 40px;
+}
+td{
+	padding: 0 5px 0 5px;
+}
+
+
+/* Form formatting */
+#contacto p{
+	display: inline-flex;
+}
+#comentario{
+	margin: 0 0 0 15px;
+}
+form{
+	padding: 15px;
+	width: 50%;
+	margin: 15px 0px 15px 20px;
+}
+
+select{
+	display: block;
+	margin: 5px 18px 5px;
+}
+
+.encasedForm{
+	margin: 0;
+	padding: 0;
+}
+
+.listaDesplegable{
+	width:13.5%;
+}
+input{
+	margin: 5px 0px 0px 20px;
+	display: block;
+}
+
+input[type=submit]{
+	margin: 10px 0px 0px 20px;
+	display: block;
+}
+
+/* Side-nav formatting */
+/*F49A39 new*/
+#sidenav {
+	height: 100%; 
+	width: 180px;
+	position: fixed; 
+	z-index: 1; 
+	top: 0; 
+	left: 0;
+	background-color:  #F49A39; 
+	overflow-x: hidden; 
+	padding-top: 20px;
+  }
+
+  #sidenav a {
+	padding: 5px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 25px;
+	font-family: 'Merriweather Sans', sans-serif;
+	color: white;
+	display: block;
+  }
+  
+  #sidenav a:hover {
+	background-color: #e68218;
+  }
+  #sidenav a:active {
+	background-color: #b66b1b;
+  }
+  #main {
+	margin-left: 160px;
+	padding: 0px 10px;
+  }
