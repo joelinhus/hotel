@@ -1,5 +1,5 @@
 <?php 
-require_once("conexion.php");
+require_once "conexion.php";
 
 /*
 	private $idCliente;
@@ -126,9 +126,9 @@ class ReservaModel
 
 		public function obtener($idReserva){
 			try{
-				$result = array();
 				$sql = "SELECT * FROM reservas WHERE idReserva=?";
-				$stm = $this->pdo->prepare($sql)->execute(array($idReserva));
+				$stm = $this->pdo->prepare($sql);
+				$stm->execute(array($idReserva));
 				$r = $stm->fetch(PDO::FETCH_OBJ);
 
 				$res = new Reserva();

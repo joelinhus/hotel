@@ -95,9 +95,8 @@ if (isset($_POST['operacion'])) {
             </option>
             <?php   if (isset($_POST['idCargo']) && $_POST['idCargo'] == $r->getIdCargo()) {
                         echo "SELECTED = SELECTED ";
-                    }?>
-            
-            <?php }?>
+                    }
+             }?>
         </select>
     </form>
 

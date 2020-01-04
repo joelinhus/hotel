@@ -69,31 +69,36 @@ if(isset($_POST['operacion'])){
 <body style="background-color:#ffb25e">
     <h1>Habitaciones</h1>
 
-    <form action="reservas.php" method="POST" class="listaDesplegable">
-    	
-        <!-- Lista desplegable auto-completable Clientes -->
 
-        <label>Cliente</label>
-        <select name="idCliente" onchange="this.form.submit();">
-        	<option selected value="0">--Seleccione--</option>
-            <?php foreach($clienteModel->listar() as $r){?>
-            <option value="<?php echo $r->getIdCliente(); ?>">
-            	<?php echo $r->getApellido(),", ",$r->getNombre(); ?></option>
-            		<?php if(isset($_POST['idCliente']) && $_POST['idCliente'] == $r->getidCliente()){
-            		echo "SELECTED = SELECTED";	
-            		}
-            	} ?>
-        </select>
+    <form action="reservas.php" method="POST" class="listaDesplegable">
+    	<label>Cliente</label>
+    	<select name="idCliente" onchange="this.form.submit();">
+    		<option selected value="0">--Seleccione--</option>
+    		<?php foreach($clienteModel->listar() as $r){
+    		?>
+    		<option value="<?php echo $r->getIdCliente(); ?>">
+    			<?php echo $r->getApellido(),", ",$r->getNombre(); ?>
+    		</option>
+    		<?php if (isset($_POST['idCliente']) && $_POST['idCliente'] == $r->getIdCliente()){
+    			echo "SELECTED = SELECTED";
+    			}
+			}
+    		?>
+    	</select>
     </form>
 
 
- <!-- Formulario de ingreso de datos -->
-	<form action="reservas.php" method="POST">
+
+    <form action="reservas.php" method="POST">
 
 		<input type="hidden" name="idHabitacion" value="<?php echo $res->getIdReserva() ?>" />
 	     <input type="hidden" name="operacion" value="<?php echo $res->getIdReserva() > 0 ? 'actualizar' : 'registrar' ?>" />
-	     <label>Check In</label><input type="date" name="checkin" />
-	     <label>Check Out</label><input type="date" name="checkout"/>
+	     <label>Check In</label><input type="date" name="checkin" value="<?php echo $res->getCheckIn(); ?>"/>
+	     <label>Check Out</label><input type="date" name="checkout" value="<?php echo $res->getCheckOut(); ?>"/>
+
+
+
+
 
 	     <label>Habitacion</label>
 	     <select name="idHabitacion">
@@ -101,22 +106,30 @@ if(isset($_POST['operacion'])){
             <option selected value="0">--Seleccione--</option>
             <?php foreach($habitacionModel->listar() as $r){?>
 
-            <option value="<?php echo $r->getNroHabitacion(); ?>">
-                <?php echo "Habitacion Nro ",$r->getNroHabitacion(); ?>
+            <option value="<?php echo $r->getIdHabitacion(); //change if error ?>"> 
+                <?php echo "Habitacion N° ",$r->getNroHabitacion(); ?>
             </option>
             <?php } ?>
         </select>
 
+
+
+
         <label>Cant. Personas</label>
-        <input max="5" type="number" name="cantPersonas"/>
+        <input max="5" type="number" name="cantPersonas" value="<?php echo $res->getCantPersonas(); ?>"/>
         <?php if(isset($_POST['idCliente'])){ ?>
 
         <input type="submit" value="Guardar"/>
         <input type="hidden" name="idCliente" value="<?php echo $_POST['idCliente'] ?>" />
-    <?php } ?>
-	</form>
-	<table border="1">
-		<thead>
+    	<?php } ?>
+    </form>
+
+
+
+
+    
+    <table border="1">
+    	<thead>
 			<tr>
 				<td>Nro. Habitacion</td>
 				<td>Check-In</td>
@@ -129,13 +142,19 @@ if(isset($_POST['operacion'])){
 			<?php
 
 			if(isset($_POST['idCliente'])){
-			foreach($model->listarxcliente($_POST['idCliente']) as $r){ 
+				foreach($model->listarxcliente($_POST['idCliente']) as $r){ 
+			
 			?>
-		
 			<tr>
-				<td> <?php echo $habitacionModel->obtener($r->getIdHabitacion())->getNroHabitacion(); ?> </td>
-				<td> <?php echo $r->getCheckIn(); ?> </td>
-				<td> <?php echo $r->getCheckOut(); ?> </td>
+				<td>
+					<?php 
+						$hm = $habitacionModel->obtener($r->getIdHabitacion());
+						echo $hm->getNroHabitacion(); 
+					?>
+					
+				</td>
+				<td><?php echo $r->getCheckIn(); ?></td>
+				<td><?php echo $r->getCheckOut(); ?></td>
 				<td>
                     <form action="reservas.php" method="post" class="encasedForm">
                         <input type="hidden" name="idReserva" value="<?php echo $r->getIdReserva(); ?>" />
@@ -153,9 +172,10 @@ if(isset($_POST['operacion'])){
                     </form>
                 </td>
 			</tr>
-		<?php }
-			}
-			?>
+			<?php
+				}
+
+			} ?>
 		</tbody>
-	</table>
+    </table>
 </body>
