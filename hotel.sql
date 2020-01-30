@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-01-2020 a las 23:09:43
+-- Tiempo de generación: 30-01-2020 a las 04:53:11
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -66,7 +66,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `nombre`, `apellido`, `email`, `dni`, `contrasena`, `pais`, `direccion`, `telefono`) VALUES
-(1, 'noel hernan', 'jeckeln', 'noel@gmail.com', 18554091, '1234', 'ARG', 'don bosco 545', '155407111');
+(1, 'Noel Hernan', 'Jeckeln', 'noel@gmail.com', 18554091, '1234', 'ARG', 'Don Bosco 545', '155407111'),
+(2, 'Rose Marie ', 'Saldivia Ruiz', 'rosemarie64_@hotmail.com', 18546982, '1234', 'ARG', 'don bosco 545', '154278651');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ CREATE TABLE `habitaciones` (
   `nroHabitacion` int(2) NOT NULL,
   `piso` int(2) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8_bin NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -88,9 +89,13 @@ CREATE TABLE `habitaciones` (
 --
 
 INSERT INTO `habitaciones` (`idHabitacion`, `idTipoHabitacion`, `nroHabitacion`, `piso`, `descripcion`, `status`) VALUES
-(3, '1', 1, 1, '1', 0),
+(3, '1', 1, 1, '1', 1),
 (4, '2', 2, 1, '2', 0),
-(5, '3', 3, 1, '3', 0);
+(5, '4', 3, 1, '3', 0),
+(6, '2', 4, 1, '4', 0),
+(15, '1', 5, 1, '5', 0),
+(16, '3', 6, 2, '6', 0),
+(17, '3', 7, 2, '7', 0);
 
 -- --------------------------------------------------------
 
@@ -119,6 +124,29 @@ INSERT INTO `paises` (`idPais`, `nombre`, `abrev`) VALUES
 (9, 'Ecuador', 'ECU'),
 (10, 'Colombia', 'COL'),
 (11, 'Venezuela', 'VNZ');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reservas`
+--
+
+CREATE TABLE `reservas` (
+  `idReserva` int(3) NOT NULL,
+  `idCliente` int(3) NOT NULL,
+  `idHabitacion` int(3) NOT NULL,
+  `cantPersonas` int(1) NOT NULL,
+  `checkin` date NOT NULL,
+  `checkout` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`idReserva`, `idCliente`, `idHabitacion`, `cantPersonas`, `checkin`, `checkout`) VALUES
+(9, 1, 3, 1, '2020-01-01', '2020-01-15'),
+(10, 2, 4, 2, '2020-01-31', '2020-02-14');
 
 -- --------------------------------------------------------
 
@@ -193,6 +221,12 @@ ALTER TABLE `paises`
   ADD PRIMARY KEY (`idPais`);
 
 --
+-- Indices de la tabla `reservas`
+--
+ALTER TABLE `reservas`
+  ADD PRIMARY KEY (`idReserva`);
+
+--
 -- Indices de la tabla `tiposhabitacion`
 --
 ALTER TABLE `tiposhabitacion`
@@ -218,19 +252,25 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCliente` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `paises`
 --
 ALTER TABLE `paises`
   MODIFY `idPais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `reservas`
+--
+ALTER TABLE `reservas`
+  MODIFY `idReserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `tiposhabitacion`
