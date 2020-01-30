@@ -1,0 +1,17 @@
+<<problemas>>
+
+edit reservas					_|
+						_|->obtener() reserva model
+show nroHabitacion reservas			_|
+
+
+
+<<git bash>>
+
+1) git status
+
+2) git add .
+
+3) git commit -m "descriptive message"
+
+4) git push
