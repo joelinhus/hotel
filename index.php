@@ -11,14 +11,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Cairo|Merriweather+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-	<a class="engranaje" href="panel.php"><img src="img/engranaje.png" height="25" width="25" /></a>
-	
+	<a class="engranaje" href="loginEmpleados.php"><img src="img/engranaje.png" height="25" width="25" /></a>
+	<a class="icono-login" href="loginClientes.php"><img src="img/login.jfif" height="25" width="25" /></a>
+
 	<a class="title" href="index.php"><h1>HOTEL</h1></a>
     
 	<div id="header">
 		<div id="nav">
-			<ul><li><a href="habitaciones.php">Habitaciones</a></li>
-				<li><a href="reserva.php">Reserva</a></li>
+			<ul><li><a href="habitacionesIndex.php">Habitaciones</a></li>
+				<li><a href="reservasIndex.php">Reserva</a></li>
 				<li><a href="registro.php">Registro</a></li>
 				<li><a href="contacto.php">Contacto</a></li>
 			</ul>

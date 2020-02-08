@@ -13,6 +13,7 @@
         <a href="clientes.php" target="contenedor">Clientes</a>
         <a href="habitaciones.php" target="contenedor">Habitaciones</a>
         <a href="reservas.php" target="contenedor">Reservas</a>
+        <a href="logout.php">Cerrar sesión</a>
     </div>
 
     <iframe style="margin-left:150px;" name="contenedor" frameborder="0" width="1199" height="680"> </iframe>

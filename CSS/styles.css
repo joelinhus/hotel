@@ -5,6 +5,19 @@
 }
 body{
 	background-color:lightblue;
+	font-family: 'Merriweather Sans', sans-serif;
+}
+
+.login{
+	width:30%;
+	background-color:white;
+	display:block;
+	margin-left:45%;
+	margin-top:20%;
+}
+
+.login input[type='submit']{
+	margin-top: 5%;
 }
 
 /* h1 formatting */
@@ -49,7 +62,7 @@ p{
 
 #nav ul li a{
 	/*23.53%*/
-	width: 23.46%;
+	width: 23.01%;
 	font-family: 'Merriweather Sans', sans-serif;
 	font-size: 11px;
 	text-align: center;
@@ -73,6 +86,19 @@ p{
 	right: 15px;
 }
 
+.flecha{
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	right: 975px;
+}
+
+.icono-login{
+	margin: 0;
+	position: absolute;
+	top: 35px;
+	right: 4.5%;
+}
 /* Body formatting */
 
 #body{
@@ -102,12 +128,19 @@ p{
 
 /* Table formatting */
 
+tr{
+	padding: 10px;
+}
+
 table{
 	background-color: white;
 	margin: 0 0 0 40px;
+	background-color:#F49A39;
+	padding:10px;
 }
 td{
 	padding: 0 5px 0 5px;
+	background-color:#ffb25e;
 }
 
 
@@ -132,6 +165,7 @@ select{
 .encasedForm{
 	margin: 0;
 	padding: 0;
+
 }
 
 .listaDesplegable{

@@ -22,6 +22,7 @@ $cli = new Cliente();
 if(isset($_POST['operacion'])){
 	switch($_POST['operacion']){
 		case 'actualizar':
+			echo $_POST['idReserva'];
 			$res->setIdReserva($_POST['idReserva']);
 	        $res->setIdCliente($_POST['idCliente']);
 	        $res->setIdHabitacion($_POST['idHabitacion']); 
@@ -91,7 +92,7 @@ if(isset($_POST['operacion'])){
 
     <form action="reservas.php" method="POST">
 
-		<input type="hidden" name="idHabitacion" value="<?php echo $res->getIdReserva() ?>" />
+		<input type="hidden" name="idReserva" value="<?php echo $res->getIdReserva() ?>" />
 	     <input type="hidden" name="operacion" value="<?php echo $res->getIdReserva() > 0 ? 'actualizar' : 'registrar' ?>" />
 	     <label>Check In</label><input type="date" name="checkin" value="<?php echo $res->getCheckIn(); ?>"/>
 	     <label>Check Out</label><input type="date" name="checkout" value="<?php echo $res->getCheckOut(); ?>"/>

@@ -139,8 +139,8 @@ if (isset($_POST['operacion'])) {
                 <td>Pais</td>
                 <td>Direccion</td>
                 <td>Telefono</td>
-                <th>Editar</th>
-                <th>Borrar</th>
+                <td>Editar</td>
+                <td>Borrar</td>
             </tr>
         </thead>
         <tbody>
@@ -152,6 +152,7 @@ if (isset($_POST['operacion'])) {
                 <td><?php echo $r->getApellido(); ?></td>
                 <td><?php echo $r->getEmail(); ?></td>
                 <td><?php echo $r->getDni(); ?></td>
+                <td><?php echo $r->getPais(); ?></td>
                 <td><?php echo $r->getDireccion(); ?></td>
                 <td><?php echo $r->getTelefono(); ?></td>
                 <td>

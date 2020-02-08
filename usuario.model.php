@@ -14,9 +14,13 @@ class UsuarioModel
     }
     
     public function existe($usuario, $contrasena){
-        $stm = $this->pdo->prepare('SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?')->execute(array($usuario,$contrasena));
+        $contrasena = md5($contrasena);
+        $stm = $this->pdo->prepare('SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?');
+        $stm->execute(array($usuario,$contrasena));
             
-        if($stm->rowCount()){
+        $resultado = $stm->fetch();
+
+        if($resultado!==false){
             return true;
         }else{
             return false;

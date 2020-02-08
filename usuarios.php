@@ -37,7 +37,8 @@ if (isset($_POST['operacion'])) {
             $usu->setNombre($_POST['nombre']);
             $usu->setApellido($_POST['apellido']);
             $usu->setUsuario($_POST['usuario']);
-            $usu->setContrasena($_POST['contrasena']);
+            $contrasena = md5($_POST['contrasena']);
+            $usu->setContrasena($contrasena);
             $usu->setIdCargo($_POST['idCargo']);
             $usu->setDni($_POST['dni']);
 

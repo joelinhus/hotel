@@ -1,8 +1,6 @@
 <<problemas>>
 
-edit reservas					_|
-						_|->obtener() reserva model
-show nroHabitacion reservas			_|
+
 
 
 
