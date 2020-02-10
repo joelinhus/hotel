@@ -1,5 +1,12 @@
 <?php 
 
+	session_start();
+
+    if(isset($_SESSION['nombre'])){
+        $nombre = $_SESSION['nombre'];
+        $apellido = $_SESSION['apellido'];
+    }
+
 require_once "reserva.model.php";
 require_once "reserva.entidad.php";
 
@@ -21,7 +28,6 @@ if(isset($_POST['operacion'])){
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +37,26 @@ if(isset($_POST['operacion'])){
 	<link href="https://fonts.googleapis.com/css?family=Cairo|Merriweather+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-	<a class="engranaje" href="panel.php"><img src="img/engranaje.png" height="25" width="25" /></a>
-	<a class="icono-login" href="loginClientes.php"><img src="img/login.jfif" height="25" width="25" /></a>
+	<?php 
+	if(isset($_SESSION['nombre'])){ ?>
+		<ul class="dropdown">
+			<li>
+				<a><img style="display:inline;" height="16" width="16" src="img/user.png"><?php echo "$nombre $apellido" ?></a>
+				<ul>
+					<li><a href="reservasCliente.php">Mis reservas</a></li>
+					<li><a href="perfil.php">Mi perfil</a></li>
+					<li><a href="logout.php">Cerrar sesión</a></li>
+				</ul>
+			</li>
+		</ul>
+		<?php
+	}
+	?>
+
+	<a class="engranaje" style="display: <?php if(isset($_SESSION['nombre'])){ echo "none"; } ?> " href="loginEmpleados.php"><img src="img/engranaje.png" height="25" width="25" /></a>
+
+	<a class="icono-login" style="display: <?php if(isset($_SESSION['nombre']) || isset($_SESSION['usuario'])){ echo "none"; } ?> " href="loginClientes.php"><img src="img/login.jfif" height="25" width="25" /></a>
+
 	<a class="title" href="index.php"><h1>HOTEL</h1></a>
     
 	<div id="header">
@@ -44,31 +68,17 @@ if(isset($_POST['operacion'])){
 			</ul>
 		</div>
 	</div>
-
 	<div id="body">
 		
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 	</div>
 
 	<div id="foot">
-		Joel Jeckeln © 2019
+		Joel Jeckeln © 2020
 	</div>
 </body>
 </html>

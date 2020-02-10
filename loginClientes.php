@@ -24,13 +24,14 @@
         
         $nombre = $resultado->getNombre();
         $apellido = $resultado->getApellido();
-        
+        $idCliente = $resultado->getIdCliente();
         
 
 
         if($resultado!==false){
             $_SESSION['nombre']=$nombre;
             $_SESSION['apellido']=$apellido;
+            $_SESSION['idCliente']=$idCliente;
             header('Location: index.php');  
 
         }else{

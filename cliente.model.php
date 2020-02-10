@@ -12,6 +12,14 @@ class ClienteModel
     }
 
 
+    public function listarreservas(){
+        try{
+            
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
     public function existe($mail, $contrasena){
         try {
 
@@ -38,19 +46,6 @@ class ClienteModel
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
-
-        
-        /*
-            
-        $resultado = $stm->fetch();
-
-        if($resultado!==false){
-            return true;
-        }else{
-            return false;
-        }
-        */
 
     }
 
