@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2020 a las 04:53:11
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.12
+-- Tiempo de generación: 10-02-2020 a las 08:42:37
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,7 @@ CREATE TABLE `clientes` (
   `apellido` varchar(35) COLLATE utf8_bin NOT NULL,
   `email` varchar(40) COLLATE utf8_bin NOT NULL,
   `dni` int(8) NOT NULL,
-  `contrasena` varchar(25) COLLATE utf8_bin NOT NULL,
+  `contrasena` varchar(80) COLLATE utf8_bin NOT NULL,
   `pais` varchar(4) COLLATE utf8_bin NOT NULL,
   `direccion` varchar(35) COLLATE utf8_bin NOT NULL,
   `telefono` varchar(25) COLLATE utf8_bin NOT NULL
@@ -66,8 +66,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `nombre`, `apellido`, `email`, `dni`, `contrasena`, `pais`, `direccion`, `telefono`) VALUES
-(1, 'Noel Hernan', 'Jeckeln', 'noel@gmail.com', 18554091, '1234', 'ARG', 'Don Bosco 545', '155407111'),
-(2, 'Rose Marie ', 'Saldivia Ruiz', 'rosemarie64_@hotmail.com', 18546982, '1234', 'ARG', 'don bosco 545', '154278651');
+(1, 'Gabriel Alejandro', 'Saldivia Ruiz', 'gabriel_sv@gmail.com', 18554091, '883a32c835781e3f3040bff10fe59481', 'ARG', 'Don Bosco 545', '155407111'),
+(2, 'Luciana', 'Saldivia', 'luchi_sv@hotmail.com', 18546982, 'ce1ee2b4efda2bc4c768ee1fdc542f41', 'ARG', 'Don Bosco 545', '154278651'),
+(3, 'Bastian Leon', 'Della Torre Jeckeln', 'bstnln@gmail.com', 56554213, 'c0cbf62a74473b08230c98799910182e', 'ARG', 'Don Bosco 545', '155879653');
 
 -- --------------------------------------------------------
 
@@ -89,13 +90,17 @@ CREATE TABLE `habitaciones` (
 --
 
 INSERT INTO `habitaciones` (`idHabitacion`, `idTipoHabitacion`, `nroHabitacion`, `piso`, `descripcion`, `status`) VALUES
-(3, '1', 1, 1, '1', 1),
+(3, '1', 1, 1, '1', 0),
 (4, '2', 2, 1, '2', 0),
 (5, '4', 3, 1, '3', 0),
 (6, '2', 4, 1, '4', 0),
 (15, '1', 5, 1, '5', 0),
 (16, '3', 6, 2, '6', 0),
-(17, '3', 7, 2, '7', 0);
+(17, '3', 7, 2, '7', 0),
+(18, '3', 8, 2, '8', 0),
+(19, '5', 9, 3, '9', 0),
+(21, '2', 10, 3, '10', 0),
+(22, '2', 11, 3, '11', 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +150,7 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`idReserva`, `idCliente`, `idHabitacion`, `cantPersonas`, `checkin`, `checkout`) VALUES
-(9, 1, 3, 1, '2020-01-01', '2020-01-15'),
+(9, 1, 3, 1, '2020-01-01', '2020-01-16'),
 (10, 2, 4, 2, '2020-01-31', '2020-02-14');
 
 -- --------------------------------------------------------
@@ -164,10 +169,11 @@ CREATE TABLE `tiposhabitacion` (
 --
 
 INSERT INTO `tiposhabitacion` (`idTipo`, `tipo`) VALUES
-(1, 'individual'),
-(2, 'doble'),
-(3, 'familiar'),
-(4, 'matrimonial');
+(1, 'Individual'),
+(2, 'Doble'),
+(3, 'Familiar'),
+(4, 'Matrimonial'),
+(5, 'Suite');
 
 -- --------------------------------------------------------
 
@@ -180,7 +186,7 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(35) COLLATE utf8_bin NOT NULL,
   `apellido` varchar(35) COLLATE utf8_bin NOT NULL,
   `usuario` varchar(35) COLLATE utf8_bin NOT NULL,
-  `contrasena` varchar(25) COLLATE utf8_bin NOT NULL,
+  `contrasena` varchar(100) COLLATE utf8_bin NOT NULL,
   `idCargo` int(3) NOT NULL,
   `dni` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -190,7 +196,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`, `idCargo`, `dni`) VALUES
-(2, 'joel', 'jeckeln', 'joelinhus', '852951', 1, 43338753);
+(2, 'Joel', 'Jeckeln', 'joelinhus', '1f0c2df1343fddd49865898af6e25f0f', 1, 43338753),
+(3, 'Rocio Noel', 'Jeckeln', 'rocionj', 'f83b5ccf675c2570cf7ff7ee326f598a', 2, 35786521),
+(4, 'Rose Marie', 'Saldivia Ruiz', 'rosma', 'febc4230e9aac8e7fb804f577f8f1524', 3, 18554091);
 
 --
 -- Índices para tablas volcadas
@@ -252,13 +260,13 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCliente` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `paises`
@@ -270,19 +278,19 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idReserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tiposhabitacion`
 --
 ALTER TABLE `tiposhabitacion`
-  MODIFY `idTipo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idTipo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -41,7 +41,8 @@ if (isset($_POST['operacion'])) {
             $cli->setApellido($_POST['apellido']);
             $cli->setEmail($_POST['email']);
             $cli->setDni($_POST['dni']);
-            $cli->setContrasena($_POST['contrasena']);
+            $contrasena = md5($_POST['contrasena']);
+            $cli->setContrasena($contrasena);
             $cli->setPais($_POST['pais']);
             $cli->setDireccion($_POST['direccion']);
             $cli->setTelefono($_POST['telefono']);

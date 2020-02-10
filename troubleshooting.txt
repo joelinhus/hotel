@@ -1,6 +1,14 @@
 <<problemas>>
 
+logincliente.php
 
+reservasIndex.php
+
+habitaciones.php
+
+Mis Reservas cliente
+
+listar x piso   habitaciones model
 
 
 

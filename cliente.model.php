@@ -11,6 +11,50 @@ class ClienteModel
         $this->pdo = $con->getConexion();
     }
 
+
+    public function existe($mail, $contrasena){
+        try {
+
+            $contrasena = md5($contrasena);
+
+            $result = array();
+            $stm = $this->pdo->prepare('SELECT * FROM clientes WHERE email = ? AND contrasena = ?');
+            $stm->execute(array($mail,$contrasena));
+            $r = $stm->fetch(PDO::FETCH_OBJ);
+
+            $cli = new Cliente();
+
+            $cli->setIdCliente($r->idCliente);
+            $cli->setNombre($r->nombre);
+            $cli->setApellido($r->apellido);
+            $cli->setEmail($r->email);
+            $cli->setDni($r->dni);
+            $cli->setContrasena($r->contrasena);
+            $cli->setPais($r->pais);
+            $cli->setDireccion($r->direccion);
+            $cli->setTelefono($r->telefono);
+
+            return $cli;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+
+
+        
+        /*
+            
+        $resultado = $stm->fetch();
+
+        if($resultado!==false){
+            return true;
+        }else{
+            return false;
+        }
+        */
+
+    }
+
+
     public function listar()
     {
         try {
@@ -156,4 +200,5 @@ class ClienteModel
             die($e->getMessage());
         }
     }
+
 }

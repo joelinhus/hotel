@@ -13,6 +13,11 @@
         header('Location: panel.php');
     }
 
+
+    if(isset($_SESSION['nombre'])){
+        header('Location: index.php');
+    }
+
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $usuario = $_POST['username'];
         $contrasena = $_POST['password'];
@@ -39,7 +44,7 @@
 </head>
 
 <body>
-    <h2>Login Empleados</h2>
+    <h1>Login Empleados</h1>
     <a class="flecha" href="index.php">
         <img title="Volver al inicio" src="img/back_arrow.png" width="40" height="40">
 </a>

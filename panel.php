@@ -1,3 +1,15 @@
+<?php
+
+    //Inicializar la sesión
+    session_start();
+    if (isset($_SESSION['usuario'])) {
+        //asignar a variable
+        $username = $_SESSION['usuario'];    
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +26,7 @@
         <a href="habitaciones.php" target="contenedor">Habitaciones</a>
         <a href="reservas.php" target="contenedor">Reservas</a>
         <a href="logout.php">Cerrar sesión</a>
+        <p class="user">Bienvenido/a <?php echo $username ?></p>
     </div>
 
     <iframe style="margin-left:150px;" name="contenedor" frameborder="0" width="1199" height="680"> </iframe>

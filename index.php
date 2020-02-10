@@ -1,5 +1,10 @@
 <?php 
+	session_start();
 
+    if(isset($_SESSION['nombre'])){
+        $nombre = $_SESSION['nombre'];
+        $apellido = $_SESSION['apellido'];
+    }
  ?>
 
 <!DOCTYPE html>
@@ -11,8 +16,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Cairo|Merriweather+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-	<a class="engranaje" href="loginEmpleados.php"><img src="img/engranaje.png" height="25" width="25" /></a>
-	<a class="icono-login" href="loginClientes.php"><img src="img/login.jfif" height="25" width="25" /></a>
+	<?php 
+	if(isset($_SESSION['nombre'])){ ?>
+		<a class="dropdown"><?php echo "$nombre $apellido" ?></a>
+		<?php
+	}
+	?>
+	<a class="engranaje" style="display: <?php if($_SESSION['nombre']){ echo "none"; } ?> " href="loginEmpleados.php"><img src="img/engranaje.png" height="25" width="25" /></a>
+	<a class="icono-login" style="display: <?php if($_SESSION['nombre']){ echo "none"; } ?> " href="loginClientes.php"><img src="img/login.jfif" height="25" width="25" /></a>
 
 	<a class="title" href="index.php"><h1>HOTEL</h1></a>
     
