@@ -5,12 +5,27 @@
         $nombre = $_SESSION['nombre'];
         $apellido = $_SESSION['apellido'];
     }
+
+    require_once "reserva.entidad.php";
+    require_once "reserva.model.php";
+
+    $model = new ReservaModel();
+    $res = new Reserva();
+
+if (isset($_POST['operacion'])) {
+    switch ($_POST['operacion']) {
+    	case 'eliminar':
+            $model->eliminar($_POST['idcliente']);
+        break;
+    }
+}
+
  ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hotel - Habitaciones</title>
+	<title>Hotel - Mis reservas</title>
 	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
 	<link rel ="icon" type="image/png" href="img/icono-hotel.ico">
 	<link href="https://fonts.googleapis.com/css?family=Cairo|Merriweather+Sans&display=swap" rel="stylesheet">
@@ -49,45 +64,43 @@
 	</div>
 	<div id="body">
 		
-	<div>
-		<form class="habitacion" action="habitacionesIndex.php" method="post">
 
-			<input onchange="this.form.submit();" name="floor" type="radio" value="1" id="floor1" <?php if (isset($_POST['floor']) && $_POST['floor'] == '1'){echo 'checked="checked"';} ?>><label for="floor1">Piso 1</label>
-			<input onchange="this.form.submit();" name="floor" type="radio" value="2" id="floor2" <?php if (isset($_POST['floor']) && $_POST['floor'] == '2'){echo 'checked="checked"';} ?>><label for="floor2">Piso 2</label>
-			<input onchange="this.form.submit();" name="floor" type="radio" value="3" id="floor3" <?php if (isset($_POST['floor']) && $_POST['floor'] == '3'){echo 'checked="checked"';} ?>><label for="floor3">Piso 3</label>
-		</form>
 
-		<?php
+<h2>Mis reservas</h2>
 
-			if(isset($_POST['floor'])){
-				$floor = $_POST['floor'];
-				$route = "";
-				switch ($floor) {
-					case '1':
-						$route="piso1.svg";
-						break;
-					case '2':
-						$route="piso2.svg";
-						break;
-					case '3':
-						$route="piso3.svg";
-					break;
-				}
-			}
-		?>
-	</div>
-	<?php
-		if(isset($_POST['floor'])){
+		<table class="misReservas">
+			<thead>
+				<tr>
+					<td>Id Reserva</td>
+					<td>Check-In</td>
+					<td>Check-Out</td>
+					<td>Cancelar</td>
+				</tr>
+			</thead>
+			<tbody>
+            <?php
 
-	?>
-		<div id="plano">
-			<img src="img/<?php echo $route; ?>">
-			
-		</div>
-		<?php 
+    foreach ($model->listarxcliente($_SESSION['idCliente']) as $r) {?>
+				<tr>
+					<td><?php echo $r->getIdReserva(); ?></td>
+					<td><?php echo $r->getCheckIn(); ?></td>
+					<td><?php echo $r->getCheckOut(); ?></td>
+					<td>
+						<form action="reservasCliente.php" method="post" class="encasedForm">
+	                        <input type="hidden" name="idcliente" value="<?php echo $r->getIdReserva(); ?>" />
+	                        <input type="hidden" name="operacion" value="eliminar" />
+	                        <input type="submit" value="X" />
+	                    </form>
+					</td>
+				</tr>
+	<?php } ?>
+			</tbody>
+		</table>
 
-		}
-		?>
+
+
+
+		
 	</div>
 
 	<div id="foot">

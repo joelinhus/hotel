@@ -3,16 +3,12 @@
 
 reservasIndex.php
 
-habitaciones.php
+habitaciones.php       ->cambiar de color segun si esta ocupado o no
 
-reservascliente.php
-
-perfil.php
-
-listar reservas reservas model
 
 listar x piso   habitaciones model
 
+reservas tiempo real  <<<<<< urgente
 
 
 <<git bash>>

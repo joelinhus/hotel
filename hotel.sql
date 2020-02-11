@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-02-2020 a las 08:42:37
+-- Tiempo de generación: 11-02-2020 a las 23:33:33
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -66,7 +66,6 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`idCliente`, `nombre`, `apellido`, `email`, `dni`, `contrasena`, `pais`, `direccion`, `telefono`) VALUES
-(1, 'Gabriel Alejandro', 'Saldivia Ruiz', 'gabriel_sv@gmail.com', 18554091, '883a32c835781e3f3040bff10fe59481', 'ARG', 'Don Bosco 545', '155407111'),
 (2, 'Luciana', 'Saldivia', 'luchi_sv@hotmail.com', 18546982, 'ce1ee2b4efda2bc4c768ee1fdc542f41', 'ARG', 'Don Bosco 545', '154278651'),
 (3, 'Bastian Leon', 'Della Torre Jeckeln', 'bstnln@gmail.com', 56554213, 'c0cbf62a74473b08230c98799910182e', 'ARG', 'Don Bosco 545', '155879653');
 
@@ -98,9 +97,10 @@ INSERT INTO `habitaciones` (`idHabitacion`, `idTipoHabitacion`, `nroHabitacion`,
 (16, '3', 6, 2, '6', 0),
 (17, '3', 7, 2, '7', 0),
 (18, '3', 8, 2, '8', 0),
-(19, '5', 9, 3, '9', 0),
-(21, '2', 10, 3, '10', 0),
-(22, '2', 11, 3, '11', 0);
+(19, '3', 9, 2, '9', 0),
+(21, '4', 10, 3, '10', 0),
+(22, '4', 11, 3, '11', 0),
+(23, '5', 12, 3, '12', 0);
 
 -- --------------------------------------------------------
 
@@ -150,8 +150,9 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`idReserva`, `idCliente`, `idHabitacion`, `cantPersonas`, `checkin`, `checkout`) VALUES
-(9, 1, 3, 1, '2020-01-01', '2020-01-16'),
-(10, 2, 4, 2, '2020-01-31', '2020-02-14');
+(10, 2, 4, 2, '2020-01-31', '2020-02-14'),
+(18, 1, 4, 2, '2020-02-01', '2020-02-27'),
+(19, 1, 4, 2, '2020-02-01', '2020-02-27');
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,7 @@ CREATE TABLE `tiposhabitacion` (
 INSERT INTO `tiposhabitacion` (`idTipo`, `tipo`) VALUES
 (1, 'Individual'),
 (2, 'Doble'),
-(3, 'Familiar'),
+(3, 'Cuadrúple'),
 (4, 'Matrimonial'),
 (5, 'Suite');
 
@@ -266,7 +267,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idHabitacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `paises`
@@ -278,7 +279,7 @@ ALTER TABLE `paises`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idReserva` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `tiposhabitacion`

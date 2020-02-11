@@ -130,7 +130,7 @@ if (isset($_POST['operacion'])) {
 
 
     <!-- Tabla de datos -->
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <td>Nombre</td>

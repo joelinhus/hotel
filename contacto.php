@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hotel- Contacto</title>
+	<title>Hotel - Contacto</title>
 	<link rel="stylesheet" type="text/css" href="CSS/styles.css">
 	<link rel ="icon" type="image/png" href="img/icono-hotel.ico">
 	<link href="https://fonts.googleapis.com/css?family=Cairo|Merriweather+Sans&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 	if(isset($_SESSION['nombre'])){ ?>
 		<ul class="dropdown">
 			<li>
-				<a><img style="display:inline;" height="16" width="16" src="img/user.png"><?php echo "$nombre $apellido" ?></a>
+				<a><img style="display:inline;margin-right:1%;" height="16" width="16" src="img/user.png"><?php echo "$nombre $apellido" ?></a>
 				<ul>
 					<li><a href="reservasCliente.php">Mis reservas</a></li>
 					<li><a href="perfil.php">Mi perfil</a></li>
@@ -39,7 +39,7 @@
 	<div id="header">
 		<div id="nav">
 			<ul><li><a href="habitacionesIndex.php">Habitaciones</a></li>
-				<li><a href="reservasIndex.php">Reserva</a></li>
+				<li><a href="reservasIndex.php">Reservas</a></li>
 				<li><a href="registro.php">Registro</a></li>
 				<li><a href="contacto.php">Contacto</a></li>
 			</ul>
@@ -66,7 +66,7 @@
 	</div>
 
 	<div id="foot">
-		Joel Jeckeln © 2019
+		Joel Jeckeln © 2020
 	</div>
 </body>
 </html>

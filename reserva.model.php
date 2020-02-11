@@ -19,6 +19,32 @@ class ReservaModel
 		}
 
 		
+		public function listarxcliente($idCliente){
+	        try{
+	            $result = array();
+
+	            $stm = $this->pdo->prepare('SELECT * FROM reservas WHERE idCliente=?');
+	            $stm->execute(array($idCliente));
+
+	            foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r){
+	            	$res = new Reserva();
+	            	
+					$res->setIdReserva($r->idReserva);
+					$res->setIdCliente($r->idCliente);
+					$res->setIdHabitacion($r->idHabitacion);
+					$res->setCantPersonas($r->cantPersonas);
+					$res->setCheckIn($r->checkin);
+					$res->setCheckOut($r->checkout);
+
+					$result[] = $res;
+
+	            }
+	            return $result;
+	        }catch(Exception $e){
+	            die($e->getMessage());
+	        }
+	    }
+
 
 		public function listar(){
 			try{
@@ -44,31 +70,6 @@ class ReservaModel
 		}
 
 
-		public function listarxcliente($idCliente){
-			try {
-            	$result = array();
-            
-            	$stm = $this->pdo->prepare("SELECT * FROM reservas WHERE idCliente= ?");
-            	$stm->execute(array($idCliente));
-
-	            foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
-
-	                $res = new Reserva();
-
-	                $res->setIdReserva($r->idReserva);
-	                $res->setIdCliente($r->idCliente);
-	                $res->setIdHabitacion($r->idHabitacion);
-	                $res->setCantPersonas($r->cantPersonas);
-	                $res->setCheckIn($r->checkin);
-	                $res->setCheckOut($r->checkout);
-
-	                $result[] = $res;
-	            }
-            	return $result;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-		}
 
 
 		public function actualizar(Reserva $data){

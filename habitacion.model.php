@@ -10,7 +10,26 @@ class HabitacionModel{
         $con = new Conexion();
         $this->pdo = $con->getConexion();
     }
-    
+
+
+
+    public function cambiarestado($idHabitacion,$estadoActual){
+        try{
+
+            if($estadoActual=="1"){
+                $estadoActual="0";
+            }else{
+                $estadoActual="1";
+            }
+
+            $stm = $this->pdo->prepare("UPDATE habitaciones SET status= ? WHERE idHabitacion= ?");
+            $stm->execute(array($estadoActual,$idHabitacion));
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+
     public function listar(){
         try{
             $result = array();

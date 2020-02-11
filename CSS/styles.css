@@ -78,7 +78,7 @@ li{
 
 #nav ul li a{
 	/*23.53%*/
-	width: 23.01%;
+	width: 23.05%;
 	font-family: 'Merriweather Sans', sans-serif;
 	font-size: 11px;
 	text-align: center;
@@ -96,7 +96,42 @@ li{
 	background-color: #2175bc;
 }
 
+.reserva{
+	margin:10% 15% 12%;
+	width:100%;
+}
 
+.reserva ul{
+	overflow: hidden;
+}
+
+.reserva ul li{
+	display:inline;
+	
+}
+
+.reserva ul li input{
+	float: left;
+	padding: 0.975%;
+}
+
+.reserva ul select{
+	display:inline;
+	margin-top: 0.5%;
+	margin-left:2%;
+	padding: 0.975%;
+}
+.reserva ul input[type=submit]{
+	padding: 2%;
+	margin:10% 27% 0;
+}
+
+.habitacion{
+
+}
+.habitacion input{
+	display: inline-block;
+}
 .engranaje{
 	margin: 0;
 	position: absolute;
@@ -172,9 +207,14 @@ li{
 
 
 
+.misReservas{
+	margin:auto;
+	background-color:#2175bc;
+}
 
-
-
+.misReservas td{
+	background-color:lightblue;
+}
 
 /* Table formatting */
 
@@ -223,6 +263,26 @@ select{
 
 }
 
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+
+}
+
+input[type=number] {
+
+    -moz-appearance:textfield;
+    width: 3%;
+
+}
+
+input[name=dni]{
+	width:18%;
+}
+
 .listaDesplegable{
 	width:13.5%;
 }
@@ -237,6 +297,10 @@ input[type=submit]{
 }
 
 
+
+#plano{
+	margin-bottom: 10%;
+}
 
 
 
