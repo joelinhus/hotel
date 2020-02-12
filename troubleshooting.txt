@@ -4,11 +4,16 @@
 reservasIndex.php
 
 habitaciones.php       ->cambiar de color segun si esta ocupado o no
+^
+iframe
 
 
 listar x piso   habitaciones model
 
 reservas tiempo real  <<<<<< urgente
+
+
+caducidad de sesión
 
 
 <<git bash>>

@@ -31,7 +31,14 @@ if(isset($_POST['operacion'])){
 	$res->setCheckIn($_POST['checkin']);
 	$res->setCheckOut($_POST['checkout']);
 
-	$model->registrar($res);
+	if( $model->registrar($res)){
+		?>
+			<script type="text/javascript">
+		alert("Reserva realizada con éxito! Te esperamos!");</script>
+		<?php
+	}else{
+		echo "ha ocurrido un error";
+	}
 
 	$res->reinicioCampos();
 }
@@ -81,7 +88,7 @@ if(isset($_POST['operacion'])){
 	<div id="body">
 		
 
-		<form onsubmit="alerta()" class="reserva" method="POST" action="reservasIndex.php">
+		<form class="reserva" method="POST" action="reservasIndex.php">
 			<ul>
 				<input type="hidden" name="idCliente" value="<?php echo $_SESSION['idCliente']; ?>">
 				<input type="hidden" name="idReserva" value="<?php echo $res->getIdReserva() ?>" />
@@ -112,11 +119,6 @@ if(isset($_POST['operacion'])){
  			</ul>
 		</form>
 
-<script type="text/javascript">
-	function alerta(){
-		alert("Reserva realizada con éxito! Te esperamos!");
-	}
-</script>
 
 	</div>
 

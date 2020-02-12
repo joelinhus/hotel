@@ -110,7 +110,7 @@ class ReservaModel
 		public function registrar(Reserva $data){
 			try{
 				$sql = "INSERT INTO reservas (idCliente,idHabitacion,cantPersonas,checkin,checkout) VALUES (?,?,?,?,?)";
-				$this->pdo->prepare($sql)
+				$stm = $this->pdo->prepare($sql)
 					->execute(
 						array(
 							$data->getIdCliente(),
@@ -123,6 +123,7 @@ class ReservaModel
 			}catch (Exception $e) {
             	die($e->getMessage());
         	}
+        	return $stm;
 		}
 
 		public function obtener($idReserva){
